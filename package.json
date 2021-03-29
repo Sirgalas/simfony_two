@@ -1,0 +1,7 @@
+{
+  "name": "\"{\\n    \\\"message\\\": \\\"Please make sure the PHP Redis extension is installed and enabled.\\\",\\n    \\\"exception\\\": \\\"LogicException\\\",\\n    \\\"file\\\": \\\"/www/app/vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php\\\",\\n    \\\"line\\\": 76,\\n    \\\"trace\\\": [\\n        {\\n            \\\"file\\\": \\\"/www/app/vendor/laravel/framework/src/Illuminate/Support/helpers.php\\\",\\n            \\\"line\\\": 433,\\n            \\\"function\\\": \\\"Illuminate\\\\\\\\Redis\\\\\\\\Connectors\\\\\\\\{closure}\\\",\\n            \\\"class\\\": \\\"Illuminate\\\\\\\\Redis\\\\\\\\Connectors\\\\\\\\PhpRedisConnector\\\",\\n            \\\"type\\\": \\\"->\\\"\\n        },\\n        {\\n            \\\"file\\\": \\\"/www/app/vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php\\\",\\n            \\\"line\\\": 104,\\n            \\\"function\\\": \\\"tap\\\"\\n        },\\n        {\\n            \\\"file\\\": \\\"/www/app/vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php\\\",\\n            \\\"line\\\": 27,\\n            \\\"function\\\": \\\"createClient\\\",\\n            \\\"class\\\": \\\"Illuminate\\\\\\\\Redis\\\\\\\\Connectors\\\\\\\\PhpRedisConnect…\" }",
+  "version": "1.0.0",
+  "dependencies": {
+    
+  }
+}

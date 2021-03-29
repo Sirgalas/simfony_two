@@ -1,0 +1,54 @@
+version: '3.6'
+services:
+  php-fpm:
+    build: docker/php-fpm
+    depends_on:
+      - db
+    links:
+      - db
+    volumes:
+      - "./:/www"
+    environment:
+      - DOCKER_PHP_CONFIG=${DOCKER_PHP_CONFIG}
+      - DOCKER_XDEBUG=${DOCKER_XDEBUG}
+      - DOCKER_SUPERVISOR=${DOCKER_SUPERVISOR}
+      - DOCKER_CRON=${DOCKER_CRON}
+    networks:
+        - simfony_two
+
+  nginx:
+    image: nginx:1.16-alpine
+    depends_on:
+      - php-fpm
+    ports:
+      - "8200:80"
+    volumes:
+      - "./:/www"
+      - "./docker/nginx/conf.d:/etc/nginx/conf.d"
+    networks:
+      - simfony_two
+
+  db:
+    image: postgres:12-alpine
+    volumes:
+      - ./docker/postgres/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=${DOCKER_DATABASE}
+      - POSTGRES_USER=${DOCKER_USERNAME}
+      - POSTGRES_PASSWORD=${DOCKER_PASSWORD}
+    ports:
+      - "8201:5432"
+    networks:
+      - simfony_two
+
+  mailhog:
+    image: mailhog/mailhog:latest
+    ports:
+      - "8203:8025"
+    depends_on:
+      - php-fpm
+    networks:
+      - simfony_two
+networks:
+  simfony_two:
+    driver: bridge
