@@ -28,17 +28,8 @@ memory:
 connect_app: # php-fpm command line
 	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/app php-fpm sh
 
-connect_node: # node command line
-	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/app node sh
-
-connect_redis: # node command line
-	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/app redis sh
-
 connect_nginx: # nginx command line
 	@docker-compose -f ${DOCKER_CONFIG} exec -w /www nginx sh
-
-connect_echo: # nginx command line
-	@docker-compose -f ${DOCKER_CONFIG} exec  -w /app echo sh
 
 connect_db: # database command line
 	@docker-compose -f ${DOCKER_CONFIG} exec db bash
@@ -52,3 +43,10 @@ init: # laravel install
 vendor: # composer install
 	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/app php-fpm composer install
 
+add_entity:
+	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/app php-fpm bin/console make:entity
+add_crud:
+	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/app php-fpm bin/console make:crud $(name)
+
+diff:
+	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/app php-fpm bin/console doctrine:migrations:diff

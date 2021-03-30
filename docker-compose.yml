@@ -1,5 +1,6 @@
 version: '3.6'
 services:
+
   php-fpm:
     build: docker/php-fpm
     depends_on:
@@ -14,7 +15,7 @@ services:
       - DOCKER_SUPERVISOR=${DOCKER_SUPERVISOR}
       - DOCKER_CRON=${DOCKER_CRON}
     networks:
-        - simfony_two
+      - two
 
   nginx:
     image: nginx:1.16-alpine
@@ -26,9 +27,10 @@ services:
       - "./:/www"
       - "./docker/nginx/conf.d:/etc/nginx/conf.d"
     networks:
-      - simfony_two
+      - two
 
   db:
+    container_name: postgres
     image: postgres:12-alpine
     volumes:
       - ./docker/postgres/postgres:/var/lib/postgresql/data
@@ -39,7 +41,7 @@ services:
     ports:
       - "8201:5432"
     networks:
-      - simfony_two
+      - two
 
   mailhog:
     image: mailhog/mailhog:latest
@@ -48,7 +50,8 @@ services:
     depends_on:
       - php-fpm
     networks:
-      - simfony_two
+      - two
+
 networks:
-  simfony_two:
+  two:
     driver: bridge
