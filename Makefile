@@ -50,3 +50,9 @@ add_crud:
 
 diff:
 	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/app php-fpm bin/console doctrine:migrations:diff
+
+migrate:
+	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/app php-fpm bin/console doctrine:migrations:migrate
+
+prev:
+	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/app php-fpm bin/console doctrine:migrations:migrate prev

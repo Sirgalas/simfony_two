@@ -32,7 +32,7 @@
 
     <a href="{{ path('book_index') }}">back to list</a>
 
-    <a href="{{ path('book_edit', {'book_id': book.book_id}) }}">edit</a>
+    <a href="{{ path('book_edit', {'book_id': book.bookId}) }}">edit</a>
 
     {{ include('book/_delete_form.html.twig') }}
 {% endblock %}

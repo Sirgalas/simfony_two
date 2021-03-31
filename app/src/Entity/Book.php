@@ -7,9 +7,15 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=BookRepository::class)
+ * @property int $book_id
+ * @property string $title
+ * @property string $author
+ * @property float $price
  */
 class Book
 {
+
+    const GENRE=['класика'=>'класика','фантастика'=>'фантастика','фэнтзи'=>'фэнтзи'];
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
