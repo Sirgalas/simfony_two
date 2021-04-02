@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CatalogController!{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-sm-12  mb-5">
+            <img src="/img/books_home.png" class="img-fluid" alt="Responsive image">
+        </div>
+        <div class="col-sm-8">
+            {% for book in books %}
+                <div class="card col-sm-4" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ book.title }}</h5>
+                        <div class="card-text row">
+                            <p class="col-sm-12">{{ book.genre }}</p>
+                            <p class="col-sm-6">{{ book.author }}</p>
+                            <p class="col-sm-5">{{  book.price }}</p>
+                        </div>
+                        <a href="#" class="btn btn-primary">{{ 'Bay'|trans }}</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="col-sm-4">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Класика</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Фантастика</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Фэнтзи</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

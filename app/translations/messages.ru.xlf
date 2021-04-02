@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="Book index">
+                <source>Book index</source>
+                <target>Книги</target>
+            </trans-unit>
+            <trans-unit id="edit">
+                <source>edit</source>
+                <target>Редактировать</target>
+            </trans-unit>
+            <trans-unit id="Book_id">
+                <source>Book_id</source>
+                <target>Номер</target>
+            </trans-unit>
+            <trans-unit id="Title">
+                <source>Title</source>
+                <target>Название</target>
+            </trans-unit>
+            <trans-unit id="Author">
+                <source>Author</source>
+                <target>Автор</target>
+            </trans-unit>
+            <trans-unit id="Price">
+                <source>Price</source>
+                <target>Цена</target>
+            </trans-unit>
+            <trans-unit id="Genre">
+                <source>Genre</source>
+                <target>Жанр</target>
+            </trans-unit>
+            <trans-unit id="actions">
+                <source>actions</source>
+                <target>Действия</target>
+            </trans-unit>
+            <trans-unit id="show">
+                <source>show</source>
+                <target>Смотреть</target>
+            </trans-unit>
+            <trans-unit id="no records found">
+                <source>no records found</source>
+                <target>Книги не найдены</target>
+            </trans-unit>
+            <trans-unit id="Create new">
+                <source>Create new</source>
+                <target>Создать новую</target>
+            </trans-unit>
+            <trans-unit id="back to list">
+                <source>back to list</source>
+                <target>Назад к списку</target>
+            </trans-unit>
+            <trans-unit id="Delete">
+                <source>Delete</source>
+                <target>Удалить</target>
+            </trans-unit>
+            <trans-unit id="Update">
+                <source>Update</source>
+                <target>Удалить</target>
+            </trans-unit>
+            <trans-unit id="Bay">
+                <source>Bay</source>
+                <target>Купить</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

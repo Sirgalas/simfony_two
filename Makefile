@@ -43,8 +43,12 @@ init: # laravel install
 vendor: # composer install
 	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/app php-fpm composer install
 
+add_controller:
+	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/app php-fpm bin/console make:controller
+
 add_entity:
 	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/app php-fpm bin/console make:entity
+
 add_crud:
 	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/app php-fpm bin/console make:crud $(name)
 
@@ -56,3 +60,6 @@ migrate:
 
 prev:
 	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/app php-fpm bin/console doctrine:migrations:migrate prev
+
+cache_clear:
+	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/app php-fpm bin/console cache:clear
