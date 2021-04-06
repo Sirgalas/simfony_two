@@ -1,0 +1,45 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}{{ "Show Genre"|trans }} {{ genre.title }}{% endblock %}
+{% block head  %}{{ "Show Genre"|trans }} {{ genre.title }}{% endblock %}
+{% block breadcrumbs %}
+    <li class="breadcrumb-item">
+        <a href="{{ path('admin_genre_index') }}">{{ 'Genre'|trans }}</a>
+    </li>
+    <li class="breadcrumb-item active">{{ "Show"|trans }}</li>
+{% endblock %}
+{% block body %}
+<div class="col-md-12">
+    <!-- general form elements -->
+    <div class="card card-success">
+        <div class="card-header">
+            <h3 class="card-title">Quick Example</h3>
+            <div class="card-tools">
+                <div class="col-auto">
+                    {{ include('admin/genre/_delete_form.html.twig')  }}
+                </div>
+                <div class="col-auto">
+                    <a href="{{ path('admin_genre_edit', {'id': genre.id}) }}" class="btn btn-primary">{{ "Edit"|trans }}</a>
+                </div>
+            </div>
+        </div>
+        <table class="table table table-striped">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ genre.id }}</td>
+                </tr>
+                <tr>
+                    <th>Title</th>
+                    <td>{{ genre.title }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ genre.description }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

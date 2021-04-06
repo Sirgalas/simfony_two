@@ -1,0 +1,64 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}{{ "Authors"|trans }}{% endblock %}
+{% block head %}{{ "Authors"|trans }}{% endblock %}{% extends 'base_admin.html.twig' %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item active">{{ 'Author'|trans }}</li>
+{% endblock %}
+{% block body %}
+<div class="col-md-12">
+    <!-- general form elements -->
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">{{ "Edit"|trans }}</h3>
+            <div class="card-tools"> {{ include('admin/author/_delete_form.html.twig') }} </div>
+        </div>
+{% block body %}
+<div class="card col-12">
+    <div class="card-header">
+        <h3 class="card-title">{{ "Authors"|trans }}</h3>
+
+        <div class="card-tools">
+            <a href="{{ path('admin_author_new') }}" class="btn btn-success">{{ "Create new"|trans }}</a>
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+    <div class="card-body p-0">
+        <table class="table table-striped projects">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Family</th>
+                    <th>Name</th>
+                    <th>Patronic</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for author in authors %}
+                <tr>
+                    <td>{{ author.id }}</td>
+                    <td>{{ author.family }}</td>
+                    <td>{{ author.name }}</td>
+                    <td>{{ author.patronic }}</td>
+                    <td class="project-actions text-right">
+                        <a href="{{ path('admin_author_show', {'id': author.id}) }}" class="" >{{ "Show"|trans }}</a>
+                        <a href="{{ path('admin_author_edit', {'id': author.id}) }}" class="">{{ "Edit"|trans }}</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">{{ "no records found"|trans }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

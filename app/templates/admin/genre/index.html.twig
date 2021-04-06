@@ -1,0 +1,50 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}{{ "Genre"|trans }}{% endblock %}
+{% block head %}{{ "Genre"|trans }}{% endblock %}
+{% block body %}
+<div class="card col-12">
+    <div class="card-header">
+        <h3 class="card-title">{{ "Genre"|trans }}</h3>
+
+        <div class="card-tools">
+            <a href="{{ path('admin_genre_new') }}" class="btn btn-success">{{ "Create new"|trans }}</a>
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+    <div class="card-body p-0">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for genre in genres %}
+                <tr>
+                    <td>{{ genre.id }}</td>
+                    <td>{{ genre.title }}</td>
+                    <td>{{ genre.description }}</td>
+                    <td>
+                        <a href="{{ path('admin_genre_show', {'id': genre.id}) }}">show</a>
+                        <a href="{{ path('admin_genre_edit', {'id': genre.id}) }}">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -6,9 +6,14 @@ use App\Repository\GenreRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use function Symfony\Component\DependencyInjection\Loader\Configurator\service_locator;
 
 /**
  * @ORM\Entity(repositoryClass=GenreRepository::class)
+ * @property int $id
+ * @property string $title
+ * @property string $description
+ * @property Genre $parent
  */
 class Genre
 {
@@ -30,7 +35,7 @@ class Genre
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Genre::class, inversedBy="genres")
+     * @ORM\OneToOne(targetEntity=Genre::class, inversedBy="genres")
      */
     private $parent;
 
@@ -147,7 +152,7 @@ class Genre
                 $book->setGenre(null);
             }
         }
-
         return $this;
     }
+
 }

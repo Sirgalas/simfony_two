@@ -1,0 +1,45 @@
+{{ form_start(form) }}
+<div class="card-body">
+    <div class="form-group">
+        {{ form_label(form.title) }}
+        {{ form_errors(form.title) }}
+        {{ form_widget(form.title,{'attr':{'class':'form-control'}}) }}
+        {{ form_help(form.title) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.small_description) }}
+        {{ form_errors(form.small_description) }}
+        {{ form_widget(form.small_description) }}
+        {{ form_help(form.small_description) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.description) }}
+        {{ form_errors(form.description) }}
+        {{ form_widget(form.description) }}
+        {{ form_help(form.description) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.genre) }}
+        {{ form_errors(form.genre) }}
+        {{ form_widget(form.genre) }}
+        {{ form_help(form.genre) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.author) }}
+        {{ form_errors(form.author) }}
+        {{ form_widget(form.author) }}
+        {{ form_help(form.author) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.price) }}
+        {{ form_errors(form.price) }}
+        {{ form_widget(form.price,{'attr':{'class':'form-control'}}) }}
+        {{ form_help(form.price) }}
+    </div>
+    <div class="card-footer">
+        <button class="btn btn btn-primary" type="submit">
+            {{ button_label|default('Save') }}
+        </button>
+    </div>
+</div>
+{{ form_end(form) }}

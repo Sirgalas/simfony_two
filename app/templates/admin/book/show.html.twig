@@ -1,0 +1,51 @@
+{% extends 'base_admin.html.twig' %}
+{% block title %}{{ "Show Book"|trans }} {{ book.title }}{% endblock %}
+{% block head  %}{{ "Show Book"|trans }} {{ book.title }}{% endblock %}
+{% block breadcrumbs %}
+    <li class="breadcrumb-item">
+        <a href="{{ path('admin_book_index') }}">{{ 'Book'|trans }}</a>
+    </li>
+    <li class="breadcrumb-item active">{{ "Show"|trans }}</li>
+{% endblock %}
+{% block body %}
+<div class="col-md-12">
+    <!-- general form elements -->
+    <div class="card card-success">
+        <div class="card-header">
+            <h3 class="card-title">Quick Example</h3>
+            <div class="card-tools">
+                <div class="col-auto">
+                    {{ include('admin/book/_delete_form.html.twig')  }}
+                </div>
+                <div class="col-auto">
+                    <a href="{{ path('admin_book_edit', {'id': book.id}) }}" class="btn btn-primary">{{ "Edit"|trans }}</a>
+                </div>
+            </div>
+        </div>
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ book.id }}</td>
+                </tr>
+                <tr>
+                    <th>Title</th>
+                    <td>{{ book.title }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ book.description }}</td>
+                </tr>
+                <tr>
+                    <th>Small_description</th>
+                    <td>{{ book.smallDescription }}</td>
+                </tr>
+                <tr>
+                    <th>Price</th>
+                    <td>{{ book.price }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

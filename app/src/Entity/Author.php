@@ -9,6 +9,12 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=AuthorRepository::class)
+ * @property string $family
+ * @property string $name
+ * @property string $patronic
+ * @property string $biograpfy
+ * @property Book[] $books
+ * @property File[] $file
  */
 class Author
 {
@@ -22,7 +28,7 @@ class Author
     /**
      * @ORM\Column(type="string", length=610)
      */
-    private $Family;
+    private $family;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -44,8 +50,14 @@ class Author
      */
     private $books;
 
+    /**
+     * @ORM\OneToMany(targetEntity=File::class, mappedBy="book")
+     */
+    private $files;
+
     public function __construct()
     {
+        $this->files = new ArrayCollection();
         $this->books = new ArrayCollection();
     }
 
@@ -56,12 +68,12 @@ class Author
 
     public function getFamily(): ?string
     {
-        return $this->Family;
+        return $this->family;
     }
 
-    public function setFamily(string $Family): self
+    public function setFamily(string $family): self
     {
-        $this->Family = $Family;
+        $this->family = $family;
 
         return $this;
     }
@@ -110,14 +122,16 @@ class Author
         return $this->books;
     }
 
-    public function addBook(Book $book): self
+    public function addBook(Book $book=null):? self
     {
-        if (!$this->books->contains($book)) {
-            $this->books[] = $book;
-            $book->addAuthor($this);
+        if($book){
+            if (!$this->books->contains($book)) {
+                $this->books[] = $book;
+                $book->addAuthor($this);
+            }
+            return $this;
         }
 
-        return $this;
     }
 
     public function removeBook(Book $book): self
@@ -128,4 +142,40 @@ class Author
 
         return $this;
     }
+
+    /**
+     * @return Collection|File[]
+     */
+    public function getFiles(): Collection
+    {
+        return $this->files;
+    }
+
+    public function addFile(File $file): self
+    {
+        if (!$this->files->contains($file)) {
+            $this->files[] = $file;
+            $file->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFile(File $file): self
+    {
+        if ($this->files->removeElement($file)) {
+            // set the owning side to null (unless already changed)
+            if ($file->getAuthor() === $this) {
+                $file->setAuthor(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getFullName()
+    {
+        return $this->name.' '.$this->patronic.' '.$this->family;
+    }
+
 }

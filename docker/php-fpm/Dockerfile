@@ -40,7 +40,7 @@ RUN docker-php-ext-install -j$(nproc) \
 			bcmath\
 			pcntl
 RUN pecl install xdebug-3.0.0 \
-&& echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
+#&& echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
 && docker-php-ext-enable xdebug
 
 COPY ./xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
@@ -129,7 +129,7 @@ WORKDIR /www
 # Install composer
 # Link composer cache into project folder
 #
-ARG COMPOSER_VERSION=1.8.5
+ARG COMPOSER_VERSION=2.0.12
 
 RUN set -xe \
 		&& echo -e "\n[www]\nuser = $DOCKER_USER\ngroup = $DOCKER_USER" >> /usr/local/etc/php-fpm.d/zz-docker.conf \
