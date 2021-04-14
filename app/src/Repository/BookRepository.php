@@ -19,6 +19,23 @@ class BookRepository extends ServiceEntityRepository
         parent::__construct($registry, Book::class);
     }
 
+
+    public function findByOrderAndLimit(string $order='asc',int $limit=10){
+        return $this->createQueryBuilder('b')
+            ->orderBy('b.id', $order)
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findByIn(string $value,$field='id'){
+        return $this->createQueryBuilder('b')
+            ->andWhere('b.'.$field.' in ('.$value.')')
+            ->getQuery()
+            ->getResult();
+    }
+
+
     // /**
     //  * @return Book[] Returns an array of Book objects
     //  */

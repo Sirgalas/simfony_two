@@ -1,0 +1,29 @@
+<div class="customar__field">
+    {{ form_start(form) }}
+    <div class="margin_between">
+        <div class="input_box space_between">
+            {{ form_label(form.name) }}
+            {{ form_errors(form.name) }}
+            {{ form_widget(form.name) }}
+        </div>
+    </div>
+    <div class="input_box">
+        {{ form_label(form.address) }}
+        {{ form_errors(form.address) }}
+        {{ form_widget(form.address,{'attr':{'placeholder':'Введите адрес'}}) }}
+    </div>
+    <div class="margin_between">
+        <div class="input_box space_between">
+            {{ form_label(form.phone) }}
+            {{ form_errors(form.phone) }}
+            {{ form_widget(form.phone) }}
+        </div>
+        <div class="input_box space_between">
+            {{ form_label(form.email) }}
+            {{ form_errors(form.email) }}
+            {{ form_widget(form.email) }}
+        </div>
+    </div>
+    <button class="btn">{{ button_label|default('Save') }}</button>
+    {{ form_end(form) }}
+</div>

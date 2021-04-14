@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Orders{% endblock %}
+
+{% block body %}
+    <!-- Start Bradcaump area -->
+    <div class="ht__bradcaump__area bg-image--4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="bradcaump__inner text-center">
+                        <h2 class="bradcaump-title">Checkout</h2>
+                        <nav class="bradcaump-content">
+                            <a class="breadcrumb_item" href="index.html">Home</a>
+                            <span class="brd-separetor">/</span>
+                            <span class="breadcrumb_item active">Checkout</span>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Bradcaump area -->
+    <section class="wn__checkout__area section-padding--lg bg__white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-12">
+                    <div class="customer_details">
+                        <h3>Billing details</h3>
+                        {{ include('orders/_form.html.twig') }}
+                    </div>
+                </div>
+                <div class="col-lg-6 col-12 md-mt-40 sm-mt-40">
+                    <div class="wn__order__box">
+                        <h3 class="onder__title">Your order</h3>
+                        <ul class="order__total">
+                            <li>Product</li>
+                            <li>Total</li>
+                        </ul>
+                        <ul class="order_product">
+                            {% for basket in basketItems  %}
+                                <li>
+                                    {{ basket['book'].title}} × {{ basket['quantity'] }}
+                                    <span>{{ basket['book'].price * basket['quantity'] }}</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
